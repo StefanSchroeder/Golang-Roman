@@ -3,11 +3,9 @@ Golang-Roman
 
 A small Go-package for Roman Numbers
 
-package main
-
+> package main
 import "roman"
 import "fmt"
-
 func main() {
   fmt.Printf("2+2=%v\n" , roman.Roman(2+2))
 	fmt.Printf("IX+IX=%v\n" , roman.Arabic("XVIII"))
