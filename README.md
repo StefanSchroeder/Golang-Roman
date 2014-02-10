@@ -1,6 +1,9 @@
 Golang-Roman
 ============
 
+[![Build Status](https://travis-ci.org/StefanSchroeder/Golang-Roman.png?branch=master)](https://travis-ci.org/StefanSchroeder/Golang-Roman)
+
+
 A small Go-package for Roman Numbers
 
 	package main
