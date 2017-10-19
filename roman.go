@@ -86,14 +86,19 @@ func Join(a []string, sep string) string {
 // Checks if the string is a valid Roman number.
 // Checks against a hilariuosly complex regex.
 func IsRoman(arg string) bool {
+
 	if arg == "" {
 		return false
 	}
+
 	c := []byte(arg)
+
 	if check, _ := regexp.Match("I{0,3}", c); check == true {
 		//if check, _ := regexp.Match("(?:M{0,3})(?:D?C{0,3}|C[DM])(?:L?X{0,3}|X[LC])(?:V?I{0,3}|I[VX])", c); check == true {
 		return true
+
 	}
+
 	return false
 }
 
@@ -102,18 +107,28 @@ func IsRoman(arg string) bool {
 func Roman(arg int) string {
 
 	if arg < 0 || arg > 4000 {
+
 		return "ROMAN_OUT_OF_RANGE"
+
 	}
 	out := []string{}
+
 	i := len(roman2arabic) - 1
+
 	for i >= 0 {
+
 		if roman2arabic[i].arabic <= arg {
+
 			out = append(out, roman2arabic[i].roman)
 			arg -= roman2arabic[i].arabic
+
 		} else {
+
 			i -= 1
+
 		}
 	}
+
 	return Join(out, "")
 
 }
