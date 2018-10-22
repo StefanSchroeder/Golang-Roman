@@ -1,9 +1,11 @@
 package roman
 
-import ("testing")
+import (
+	"testing"
+)
 
 type romanTest struct {
-  in int
+	in  int
 	out string
 }
 
@@ -4036,4 +4038,3 @@ func TestArabic(t *testing.T) {
 		}
 	}
 }
-
