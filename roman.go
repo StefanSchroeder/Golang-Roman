@@ -6,7 +6,10 @@ package roman
 // Copyright (c) 2012 Stefan Schroeder. All rights reserved.
 // LICENSE is located here: http://golang.org/LICENSE
 
-import "regexp"
+import (
+	"regexp"
+	"strings"
+)
 
 // Checks if the string is a valid Roman number.
 // Checks against a hilariuosly complex regex.
@@ -25,6 +28,10 @@ func IsRoman(arg string) bool {
 // Convert the argument integer to a Roman number string.
 // Valid only for values greater 0 and smaller than 4000.
 func Roman(arg int) string {
+	// Return early in case of invalid argument.
+	if arg < 0 || arg > 4000 {
+		return "ROMAN_OUT_OF_RANGE"
+	}
 
 	figure := []int{1000, 100, 10, 1}
 	roman_digitA := []string{
@@ -40,44 +47,37 @@ func Roman(arg int) string {
 		1000: "MMMMM",
 	}
 
-	if arg < 0 || arg > 4000 {
-		return "ROMAN_OUT_OF_RANGE"
-	}
-
-	roman_slice := []string{}
+	var roman strings.Builder
 	x := ""
 
 	for _, f := range figure {
 		digit, i, v := int(arg/f), roman_digitA[f], roman_digitB[f]
 		switch digit {
 		case 1:
-			roman_slice = append(roman_slice, string(i))
+			roman.WriteString(i)
 		case 2:
-			roman_slice = append(roman_slice, string(i)+string(i))
+			roman.WriteString(i + i)
 		case 3:
-			roman_slice = append(roman_slice, string(i)+string(i)+string(i))
+			roman.WriteString(i + i + i)
 		case 4:
-			roman_slice = append(roman_slice, string(i)+string(v))
+			roman.WriteString(i + v)
 		case 5:
-			roman_slice = append(roman_slice, string(v))
+			roman.WriteString(v)
 		case 6:
-			roman_slice = append(roman_slice, string(v)+string(i))
+			roman.WriteString(v + i)
 		case 7:
-			roman_slice = append(roman_slice, string(v)+string(i)+string(i))
+			roman.WriteString(v + i + i)
 		case 8:
-			roman_slice = append(roman_slice, string(v)+string(i)+string(i)+string(i))
+			roman.WriteString(v + i + i + i)
 		case 9:
-			roman_slice = append(roman_slice, string(i)+string(x))
+			roman.WriteString(i + x)
 		}
 
 		arg -= digit * f
 		x = i
 	}
-	ret := ""
-	for _, e := range roman_slice {
-		ret += e
-	}
-	return ret
+
+	return roman.String()
 }
 
 // Convert the argument Roman string to an arabic integer.
