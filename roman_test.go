@@ -1,9 +1,11 @@
 package roman
 
-import ("testing")
+import (
+	"testing"
+)
 
 type romanTest struct {
-  in int
+	in  int
 	out string
 }
 
@@ -4037,3 +4039,20 @@ func TestArabic(t *testing.T) {
 	}
 }
 
+func BenchmarkIsRoman(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		IsRoman(romanTests[n%len(romanTests)].out)
+	}
+}
+
+func BenchmarkRoman(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		Roman(romanTests[n%len(romanTests)].in)
+	}
+}
+
+func BenchmarkArabic(b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		Arabic(romanTests[n%len(romanTests)].out)
+	}
+}
