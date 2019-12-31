@@ -29,7 +29,7 @@ func IsRoman(arg string) bool {
 // Valid only for values greater 0 and smaller than 4000.
 func Roman(arg int) string {
 	// Return early in case of invalid argument.
-	if arg < 0 || arg > 4000 {
+	if arg < 1 || arg > 4000 {
 		return "ROMAN_OUT_OF_RANGE"
 	}
 
