@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-// Checks if the string is a valid Roman number.
+// IsRoman checks if the string is a valid Roman number.
 // Checks against a hilariuosly complex regex.
 func IsRoman(arg string) bool {
 	if arg == "" {
@@ -25,7 +25,7 @@ func IsRoman(arg string) bool {
 	return false
 }
 
-// Convert the argument integer to a Roman number string.
+// Roman converts the argument integer to a Roman number string.
 // Valid only for values greater 0 and smaller than 4000.
 func Roman(arg int) string {
 	// Return early in case of invalid argument.
@@ -34,13 +34,13 @@ func Roman(arg int) string {
 	}
 
 	figure := []int{1000, 100, 10, 1}
-	roman_digitA := []string{
+	romanDigitA := []string{
 		1:    "I",
 		10:   "X",
 		100:  "C",
 		1000: "M",
 	}
-	roman_digitB := []string{
+	romanDigitB := []string{
 		1:    "V",
 		10:   "L",
 		100:  "D",
@@ -51,7 +51,7 @@ func Roman(arg int) string {
 	x := ""
 
 	for _, f := range figure {
-		digit, i, v := int(arg/f), roman_digitA[f], roman_digitB[f]
+		digit, i, v := int(arg/f), romanDigitA[f], romanDigitB[f]
 		switch digit {
 		case 1:
 			roman.WriteString(i)
@@ -80,7 +80,7 @@ func Roman(arg int) string {
 	return roman.String()
 }
 
-// Convert the argument Roman string to an arabic integer.
+// Arabic converts the argument Roman string to an arabic integer.
 // Returns -1 if not a valid Roman number.
 func Arabic(arg string) int {
 
