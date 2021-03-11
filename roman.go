@@ -77,13 +77,11 @@ func Roman(arg int) (string, error) {
 	return roman.String(), nil
 }
 
+var roman2arabic = map[string]int{"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+
 // Arabic converts the argument Roman string to an arabic integer.
 // Returns -1 if not a valid Roman number.
 func Arabic(arg string) int {
-
-	roman2arabic := map[string]int{
-		"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000,
-	}
 
 	/*if ! IsRoman(arg) {
 	   return -1
