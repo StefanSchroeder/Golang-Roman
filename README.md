@@ -1,3 +1,8 @@
+[![GoDoc](https://godoc.org/github.com/StefanSchroeder/Golang-Roman?status.png)](https://godoc.org/github.com/StefanSchroeder/Golang-Roman)
+[![Build Status](https://travis-ci.org/StefanSchroeder/Golang-Roman.svg?branch=master)](https://travis-ci.org/StefanSchroeder/Golang-Roman)
+[![Go Report Card](http://goreportcard.com/badge/StefanSchroeder/Golang-Roman)](http://goreportcard.com/report/StefanSchroeder/Golang-Roman)
+ [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Golang-Roman
 ============
 
@@ -7,12 +12,13 @@ Golang-Roman
 A small Go-package for Roman Numbers
 
 	package main
-	import "roman"
+	import roman "github.com/StefanSchroeder/Golang-Roman"
 	import "fmt"
 	func main() {
 		fmt.Printf("2+2=%v\n" , roman.Roman(2+2))
+		// Prints 2+2=IV
 		fmt.Printf("IX+IX=%v\n" , roman.Arabic("XVIII"))
-	// fmt.Printf("is IX a Roman number?: %v\n" , roman.IsRoman("IX"))
+		// Prints IX+IX=18
 	}
 
 Added Travis.
