@@ -7,6 +7,7 @@ package roman
 // LICENSE is located here: http://golang.org/LICENSE
 
 import (
+	"errors"
 	"regexp"
 	"strings"
 )
@@ -29,14 +30,16 @@ var (
 	romanFigure = []int{1000, 100, 10, 1}
 	romanDigitA = []string{1: "I", 10: "X", 100: "C", 1000: "M"}
 	romanDigitB = []string{1: "V", 10: "L", 100: "D", 1000: "MMMMM"}
+
+	ErrOutOfRange = errors.New("out of range")
 )
 
 // Convert the argument integer to a Roman number string.
 // Valid only for values greater 0 and smaller than 4000.
-func Roman(arg int) string {
+func Roman(arg int) (string, error) {
 	// Return early in case of invalid argument.
 	if arg < 1 || arg > 4000 {
-		return "ROMAN_OUT_OF_RANGE"
+		return "", ErrOutOfRange
 	}
 
 	var roman strings.Builder
@@ -69,7 +72,7 @@ func Roman(arg int) string {
 		x = i
 	}
 
-	return roman.String()
+	return roman.String(), nil
 }
 
 var roman2arabic = map[string]int{"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
