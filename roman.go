@@ -34,13 +34,13 @@ func Roman(arg int) string {
 	}
 
 	figure := []int{1000, 100, 10, 1}
-	roman_digitA := []string{
+	romanDigitA := []string{
 		1:    "I",
 		10:   "X",
 		100:  "C",
 		1000: "M",
 	}
-	roman_digitB := []string{
+	romanDigitB := []string{
 		1:    "V",
 		10:   "L",
 		100:  "D",
@@ -51,7 +51,7 @@ func Roman(arg int) string {
 	x := ""
 
 	for _, f := range figure {
-		digit, i, v := int(arg/f), roman_digitA[f], roman_digitB[f]
+		digit, i, v := int(arg/f), romanDigitA[f], romanDigitB[f]
 		switch digit {
 		case 1:
 			roman.WriteString(i)
