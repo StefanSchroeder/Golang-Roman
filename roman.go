@@ -25,6 +25,12 @@ func IsRoman(arg string) bool {
 	return false
 }
 
+var (
+	romanFigure = []int{1000, 100, 10, 1}
+	romanDigitA = []string{1: "I", 10: "X", 100: "C", 1000: "M"}
+	romanDigitB = []string{1: "V", 10: "L", 100: "D", 1000: "MMMMM"}
+)
+
 // Convert the argument integer to a Roman number string.
 // Valid only for values greater 0 and smaller than 4000.
 func Roman(arg int) string {
@@ -33,24 +39,10 @@ func Roman(arg int) string {
 		return "ROMAN_OUT_OF_RANGE"
 	}
 
-	figure := []int{1000, 100, 10, 1}
-	romanDigitA := []string{
-		1:    "I",
-		10:   "X",
-		100:  "C",
-		1000: "M",
-	}
-	romanDigitB := []string{
-		1:    "V",
-		10:   "L",
-		100:  "D",
-		1000: "MMMMM",
-	}
-
 	var roman strings.Builder
 	x := ""
 
-	for _, f := range figure {
+	for _, f := range romanFigure {
 		digit, i, v := int(arg/f), romanDigitA[f], romanDigitB[f]
 		switch digit {
 		case 1:
@@ -80,13 +72,11 @@ func Roman(arg int) string {
 	return roman.String()
 }
 
+var roman2arabic = map[string]int{"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+
 // Convert the argument Roman string to an arabic integer.
 // Returns -1 if not a valid Roman number.
 func Arabic(arg string) int {
-
-	roman2arabic := map[string]int{
-		"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000,
-	}
 
 	/*if ! IsRoman(arg) {
 	   return -1
