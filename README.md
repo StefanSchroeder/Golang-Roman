@@ -19,3 +19,10 @@ A small Go-package for Roman Numbers
 	}
 
 Added Travis.
+
+## Changelog:
+
+1.0: Initial
+
+2.0: Changed Roman() to return tupel (incl. error). Thanks to Jim Eagle for the contribution.
+
